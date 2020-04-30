@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Alexa - Doorbell Press - Simulation</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./doorbell_announcement.js"></script>
+</head>
+
+<body>
+    <h1 class="title">Demo: Simulate Alexa Doorbell Pressed Events</h1>
+    <div>
+        <h3>BE SURE TO START YOUR CAMERA STREAM BEFORE <a href="./camera_demo.html" target="./blank">HERE</a></h3>
+    </div>
+    <hr>
+    <div>
+        <h3>SENDING DOORBELL PRESSED EVENT TO ALEXA EVENT GATEWAY</h3>
+        <form id="doorbellPressed" onsubmit="return false">
+            <table>
+                <tr>
+                    <td>Region </td>
+                    <td>
+                        <select name="alexa-region" id="alexa-region">
+                            <option value="EU">Europe & India</option>
+                            <option value="FE">Far East</option>
+                            <option value="NA">North America</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Doorbell EndpointId </td>
+                    <td><textarea name="endpoint-id" id="endpoint-id" cols="100" rows="1"
+                            placeholder="video-doorbell-001"></textarea></td>
+                </tr>
+                <tr>
+                    <td>LWA Access Token for Alexa Event Gateway </td>
+                    <td><textarea name="bearer-token" id="bearer-token" cols="100" rows="6"
+                            placeholder="Atza|..."></textarea></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Press Doorbell" onclick="doorbellPressedForm()" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="divDoorbellPressedResponse">
+        <h3>ALEXA EVENT GATEWAY RESPONSE</h3>
+        <div id="divDoorbellResult"></div>
+    </div>
+    <hr>
+    <div>
+        <h3>LWA TOKEN RENEWAL TO ACCESS ALEXA EVENT GATEWAY</h3>
+        <form id="renewToken" onsubmit="return false">
+            <table>
+                <tr>
+                    <td>LWA Refresh Token for Alexa Event Gateway</td>
+                    <td><textarea name="refresh-token" id="refresh-token" cols="100" rows="6"
+                            placeholder="Atzr|..."></textarea></td>
+                </tr>
+                <tr>
+                    <td>Client ID for Alexa Event Gateway</td>
+                    <td><textarea name="client-id-psu" id="client-id-psu" cols="100" rows="1"
+                            placeholder="amzn1.application-oa2-client.a1b2c3..."></textarea></td>
+                </tr>
+                <tr>
+                    <td>Client Secret for Alexa Event Gateway</td>
+                    <td><textarea name="client-secret-psu" id="client-secret-psu" cols="100" rows="1"
+                            placeholder="a1b2c3....."></textarea><br /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Renew Token" onclick="renewTokenForm()" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="divLwaTokenResponse">
+        <h3>LWA TOKEN SERVER RESPONSE</h3>
+        <div id="divLwaResult"></div>
+        <div id="divLwaPrettyPrint"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>AWS KVS - WebRTC Master - Camera</title>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.595.0.min.js"></script>
+    <script src="https://unpkg.com/amazon-kinesis-video-streams-webrtc/dist/kvs-webrtc.min.js"></script>
+</head>
+
+<body>
+    <h1 class="title">Demo: Alexa Camera WebRTC integration with AWS KVS WebRTC </h1>
+    <div>
+        <h3>KVS MASTER (WEBCAM/MIC)</h3>
+        <div>
+            <button id="start_button" onclick="startMaster()">Start Camera (Maste)r</button>
+            <button id="stop_button" onclick="stopMaster()">Stop Camera (Master)</button>
+        </div>
+        <video id="local" controls></video>
+    </div>
+    <div>
+        <h3>KVS CLIENT (ECHO DEVICE)</h3>
+        <audio id="remote" autoplay="true" controls></audio>
+    </div>
+    <div id='divLogger'>
+        <h3>LOGS</h3>
+    </div>
+    <script>
+        // Redefine Window.Console
+        // Objective: Dump logs in console & html page
+        function configureLogging() {
+            // Log into HTML
+            function log(level, messages) {
+                const text = messages
+                    .map(message => {
+                        if (typeof message === 'object') {
+                            return JSON.stringify(message, null, 2);
+                        } else {
+                            return message;
+                        }
+                    })
+                    .join(' ');
+                var node = document.createElement("div");
+                node.className = level.toLowerCase();
+                var nodeContent = `[${new Date().toISOString()}] [${level}] ${text}`;
+                node.appendChild(document.createTextNode(nodeContent));
+                document.getElementById("divLogger").appendChild(node);
+            }
+            // Override Error Logger
+            console._error = console.error;
+            console.error = function (...rest) {
+                log('ERROR', Array.prototype.slice.call(rest));
+                console._error.apply(this, rest);
+            };
+            // Override Warn Logger
+            console._warn = console.warn;
+            console.warn = function (...rest) {
+                log('WARN', Array.prototype.slice.call(rest));
+                console._warn.apply(this, rest);
+            };
+            // Override Log Logger
+            console._log = console.log;
+            console.log = function (...rest) {
+                log('INFO', Array.prototype.slice.call(rest));
+                console._log.apply(this, rest);
+            };
+        }
+        // Update Window.Console
+        configureLogging();
+    </script>
+    <script src="./kvs_webrtc.js"></script>
+    <script>
+        // Initialize AWS KVS WebRTC Signaling Channel
+        initializeKVS();
+    </script>
+</body>
+
+</html>
