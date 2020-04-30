@@ -134,8 +134,7 @@ If you are at this step, it means you have already:
 | Utterance | Alexa Device Component | Flux Duplex Camera | Half Duplex Camera  | No Duplex Camera |
 | ------------- |:-------------:|:-----:|:-------------:|:-----:|
 | "Alexa, show me the doorbell" | Microphone | Disabled | Disabled | N/A
-| "Alexa, show me the doorbell" | Screen | Launch camera feed with talk icon **disabled**. Can **tap** to talk | Launch camera feed with talk icon **disabled**. Can **push** to talk, **release** to stop | Launch Camera feed with no talk button
-| 
+| "Alexa, show me the doorbell" | Screen | Launch camera feed with talk icon **disabled**. Can **tap** to talk | Launch camera feed with talk icon **disabled**. Can **push** to talk, **release** to stop | Launch Camera feed with no talk button 
 | "Alexa, talk to the doorbell" | Microphone | Enabled | Disabled | N/A
 | "Alexa, talk to the doorbell" | Screen | Launch camera feed with talk icon **enabled**. Can **tap** to stop talking | Launch camera feed with talk icon **disabled**. Can **push** to talk, **release** to stop | Launch Camera feed with no talk button
 
