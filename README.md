@@ -42,6 +42,7 @@ However, here are a few points of attention:
         * For `Access Token URI` field use https://api.amazon.com/auth/o2/token
         * For `Client ID` field use value for LWA Security Profile
         * For `Your Secret` field use value from LWA Security Profile
+        * For `Scope` field use profile
 
     * You shall whitelist the `Alexa Redirect URLs` listed on the Account Linking page in your OAUTH service. Typically, for LWA, it means going back in the [LWA Section of the Developer Portal](https://developer.amazon.com/loginwithamazon/console/site/lwa/overview.html), select your `Security Profile`, go to the `Web Settings` and update the `Allowed Return URLs` by clicking the `Edit` button. You should have 3 URLs to add and they shall look like the following ones:
 ```
